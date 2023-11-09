@@ -1,4 +1,7 @@
-<div class="flight-details-screen flex justify-content-center">
+<div
+  class="flight-details-screen flex justify-content-center"
+  *ngIf="{ isDarkMode: uiService.isDarkMode$ | async } as flightDetailsContext"
+>
   <div class="boxed-container">
     <!-- <div class="my-5">
       <span class="text-6xl text-primary font-bold">{{
@@ -13,7 +16,7 @@
         ></app-flight-line>
       </div>
       <div class="col-12 xl:col-5">
-        <p-card class="price-container flex" styleClass="flex flex-column">
+        <p-card class="price-container">
           <ng-template class="relative" pTemplate="header">
             <div class="border-bottom-1 flex mobile-title-price-header">
               <!-- <div class="flex align-content-center font-bold"></div> -->
@@ -24,25 +27,24 @@
             </div>
           </ng-template>
           <ng-template pTemplate="body" class="flex-1">
-            <!-- <div class="mb-3">
-              <span class="text-white font-bold text-2xl"
-                >Finalize your payment</span
-              >
-            </div> -->
             <div class="text-center mb-2">
-              <p class="text-primary font-bold text-4xl mb-2">
+              <p class="text-primary font-bold text-4xl mb-2 cursor-pointer">
                 <i class="pi pi-camera text-4xl"></i>
                 {{ "cc_card.scan_card" | translate }}
               </p>
               <p class="text-primary font-bold text-xl mb-2">OR</p>
-              <span class="text-primary text-base">{{
+              <span class="text-primary text-base cursor-pointer">{{
                 "cc_card.enter_manually" | translate
               }}</span>
             </div>
 
             <p-card
               class="flex justify-content-center"
-              styleClass=" credit-card  relative hidden md:block"
+              styleClass="{{
+                flightDetailsContext.isDarkMode
+                  ? 'credit-card relative gray-800'
+                  : 'credit-card relative surface-200'
+              }}"
             >
               <div class="flex justify-content-between">
                 <img src="/assets/chip.png" height="50px" alt="" />
@@ -80,7 +82,9 @@
               </div>
               <div class="grid">
                 <div class="card-number mt-3 col-8">
-                  <p class="mb-2 font-bold">{{ "cc_card.name" | translate }}</p>
+                  <p class="mb-2 font-bold">
+                    {{ "cc_card.name" | translate }}
+                  </p>
                   <div>
                     <input
                       pInputText

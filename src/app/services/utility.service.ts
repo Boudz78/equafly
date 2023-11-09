@@ -51,4 +51,19 @@ export class UtilityService {
 
     return Array.from(uniqueAirlines, ([name, code]) => ({ name, code }));
   }
+
+  extractUniqueFromTo(flights: Flight[]) {
+    const uniqueFrom = new Set();
+    const uniqueTo = new Set();
+
+    flights.forEach((airline) => {
+      uniqueFrom.add(airline.from);
+      uniqueTo.add(airline.to);
+    });
+
+    return {
+      from: [...uniqueFrom],
+      to: [...uniqueTo],
+    };
+  }
 }

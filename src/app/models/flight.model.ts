@@ -12,6 +12,7 @@ export interface Trip {
 export interface Flight {
   id: number;
   passengers: number;
+  baggage: number;
   airline: Airline;
   price: number;
   from: string;

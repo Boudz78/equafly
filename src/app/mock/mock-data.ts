@@ -2,6 +2,8 @@ export const mockAirlinesResult = [
   {
     id: 0,
     passengers: 3,
+    baggage: 3,
+
     airline: { name: 'France Airways', code: 'AF' },
     price: 500,
     from: 'Lebanon',
@@ -64,6 +66,7 @@ export const mockAirlinesResult = [
   {
     id: 1,
     passengers: 1,
+    baggage: 1,
     airline: { name: 'Emirates', code: 'EK' },
     price: 800,
     from: 'UAE',
@@ -96,6 +99,8 @@ export const mockAirlinesResult = [
   {
     id: 2,
     passengers: 1,
+    baggage: 4,
+
     price: 1200,
 
     airline: { name: 'Emirates', code: 'EK' },
@@ -115,6 +120,84 @@ export const mockAirlinesResult = [
     ],
     roundTripInfo: [],
   },
+  {
+    id: 3,
+    passengers: 3,
+    baggage: 3,
+    price: 1500,
+    airline: { name: 'Turkish Airlines', code: 'TK' },
+    from: 'Turkey',
+    to: 'USA',
+    tripInfo: [
+      {
+        departureTime: new Date(),
+        country: 'Turkey',
+        airport: 'TUR',
+      },
+      {
+        departureTime: new Date(new Date().setDate(new Date().getDate() + 5)),
+        country: 'USA',
+        airport: 'MIA',
+      },
+    ],
+    roundTripInfo: [],
+  },
+  {
+    id: 4,
+    passengers: 2,
+    baggage: 4,
+    price: 874,
+    airline: { name: 'Qatar Airways', code: 'QR' },
+    from: 'Qatar',
+    to: 'England',
+    tripInfo: [
+      {
+        departureTime: new Date(),
+        country: 'Qatar',
+        airport: 'TUR',
+      },
+      {
+        departureTime: new Date(new Date().setDate(new Date().getDate() + 5)),
+        country: 'England',
+        airport: 'MIA',
+      },
+    ],
+    roundTripInfo: [],
+  },
+  {
+    id: 5,
+    passengers: 4,
+    baggage: 2,
+    price: 874,
+    airline: { name: 'Emirates', code: 'EK' },
+    from: 'Qatar',
+    to: 'India',
+    tripInfo: [
+      {
+        departureTime: new Date(),
+        country: 'Qatar',
+        airport: 'QTR',
+      },
+      {
+        departureTime: new Date(new Date().setDate(new Date().getDate() + 5)),
+        country: 'England',
+        airport: 'India',
+      },
+    ],
+    roundTripInfo: [
+      {
+        departureTime: new Date(new Date().setDate(new Date().getDate() + 5)),
+        country: 'England',
+        airport: 'India',
+      },
+      {
+        departureTime: new Date(new Date().setDate(new Date().getDate() + 8)),
+        country: 'Qatar',
+        airport: 'QTR',
+      },
+    ],
+  },
+
   // {
   //   id: 1,
 

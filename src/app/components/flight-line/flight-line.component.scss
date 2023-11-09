@@ -23,6 +23,15 @@
     mask-repeat: no-repeat;
     mask-size: contain;
   }
+  .airline-takeoff-mini {
+    background: var(--surface-100);
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    mask-image: url("/assets/logo/flight_takeoff.svg");
+    mask-repeat: no-repeat;
+    mask-size: contain;
+  }
   .airline-return {
     background: var(--primary-color);
     background-repeat: no-repeat;

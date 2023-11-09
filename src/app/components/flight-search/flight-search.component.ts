@@ -43,6 +43,10 @@ export class FlightSearchComponent {
   //Static Data
   countries: Array<any> = [
     { label: 'Lebanon', code: 'Lebanon' },
+    { label: 'UAE', code: 'UAE' },
+    { label: 'France', code: 'France' },
+    { label: 'Turkey', code: 'Turkey' },
+    { label: 'Qatar', code: 'Qatar' },
     // { label: 'Brazil', code: 'BR' },
     // { label: 'China', code: 'CN' },
     // { label: 'Egypt', code: 'EG' },
@@ -54,7 +58,10 @@ export class FlightSearchComponent {
     // { label: 'United States', code: 'US' },
   ];
   toCountries = [
-    { label: 'Lebanon', code: 'Lebanon' },
+    { label: 'Belgium', code: 'Belgium' },
+    { label: 'USA', code: 'USA' },
+    { label: 'England', code: 'England' },
+    { label: 'India', code: 'India' },
     // { label: 'Brazil', code: 'BR' },
     // { label: 'China', code: 'CN' },
     // { label: 'Egypt', code: 'EG' },

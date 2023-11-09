@@ -23,7 +23,7 @@
     "search_country": "Rechercher ",
     "search_date": "Date de recherche",
     "select_trip": "Voyage",
-    "select_passengers": "Taille du passager"
+    "select_passengers": "passager"
   },
   "flight_line": {
     "outbound": "Vol aller",

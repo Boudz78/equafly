@@ -4,6 +4,9 @@
     flightData: displayedFlights$ | async
   } as homeScreenContext"
   class="home-screen bg-light h-100 flex justify-content-center"
+  [ngClass]="{
+    'surface-300': !(uiService.isDarkMode$ | async)
+  }"
 >
   <!-- <h1>IS SIDE OPENED? {{ homeScreenContext.filterScreenOpened }}</h1> -->
 
@@ -76,7 +79,7 @@
                   localFilter.stops === null &&
                   localFilter.price === null
                 "
-                class="bg-primary p-3 border-round-2xl"
+                class="bg-primary p-3 border-round-2xl cursor-pointer"
                 (click)="uiService.toggleFilterTab()"
               >
                 <i
@@ -108,13 +111,15 @@
                 (click)="navigateToFlightDetails(trip.id)"
               ></app-flight-line>
             </div>
-            <pagination-controls
-              *ngIf="homeScreenContext.flightData.length > 0"
-              previousLabel=""
-              nextLabel=""
-              (pageChange)="p = $event"
-              [directionLinks]="false"
-            ></pagination-controls>
+            <div class="flex justify-content-center">
+              <pagination-controls
+                *ngIf="homeScreenContext.flightData.length > 0"
+                previousLabel=""
+                nextLabel=""
+                (pageChange)="p = $event"
+                [directionLinks]="false"
+              ></pagination-controls>
+            </div>
           </div>
           <p-sidebar
             [visible]="!!homeScreenContext.filterScreenOpened"

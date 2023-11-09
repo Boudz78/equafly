@@ -1,7 +1,12 @@
 .home-screen {
   height: 100vh;
   padding-top: 82px;
+  ::ng-deep .p-card-body {
+    padding-left: 32px !important;
+    padding-right: 64px !important;
+  }
 }
+
 ::ng-deep .ngx-pagination .current {
   background: var(--primary-color) !important;
   border-radius: 50%;

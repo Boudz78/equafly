@@ -4,8 +4,17 @@
     height: 40px;
   }
   .filter-item {
-    min-width: 210px;
+    min-width: 185px;
     max-width: 100%;
     width: 100%;
   }
+  .date-item {
+    max-width: 100% !important;
+  }
+}
+
+.filter-search-container {
+  border-top-right-radius: 64px;
+  border-bottom-right-radius: 64px;
+  width: 60px;
 }
