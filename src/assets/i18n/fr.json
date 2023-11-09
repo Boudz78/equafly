@@ -1,0 +1,64 @@
+{
+  "login": {
+    "portalTitle": "Connexion au portail",
+    "login": "Se connecter",
+    "username": "nom d'utilisateur",
+    "password": "mot de passe"
+  },
+  "navbar": {
+    "settings": "Paramètres",
+    "dark_mode": "Mode sombre"
+  },
+  "home_screen": {
+    "title": "Vos vols, en un coup d'œil.",
+    "results": "Résultats"
+  },
+  "flight_search": {
+    "from": "Depuis",
+    "to": "À",
+    "date": "Date",
+    "trip": "Voyage",
+    "passengers": "Passagères",
+    "go": "Aller",
+    "search_country": "Rechercher ",
+    "search_date": "Date de recherche",
+    "select_trip": "Voyage",
+    "select_passengers": "Taille du passager"
+  },
+  "flight_line": {
+    "outbound": "Vol aller",
+    "inbound": "Vol entrant",
+    "flight_summary": "Résumé du vol",
+    "passengers": "Passengers",
+    "baggages_per_person": "Baggages per person"
+  },
+  "cc_card": {
+    "flight_total": "Total du vol",
+    "scan_card": "Scanner la carte",
+    "or": "ou",
+    "enter_manually": "Entrer manuellement",
+    "card_nb": "Numéro de carte",
+    "expiry_date": "date d'expiration",
+    "name": "Nom",
+    "cvv": "CVV",
+    "pay": "Payer"
+  },
+  "flight_filter": {
+    "filter_by": "Filtrer par",
+    "nb_of_stops": "Nombre d'arrêts",
+    "airlines": "Compagnies aériennes",
+    "price": "Prix",
+    "apply_filters": "Appliquer des filtres"
+  },
+  "flight_details": {
+    "title": "Tu y es presque! "
+  },
+  "shared": {
+    "save": "Sauvegarder",
+    "cancel": "Annuler"
+  },
+  "about": {
+    "about_us": "Ce que nous faisons.",
+    "para": "EquaFly est une compagnie aéronautique innovante qui se consacre à fournir des solutions de transport aérien haut de gamme et durables. Avec une flotte moderne conçue pour l'efficacité et le confort, EquaFly relie les passagers vers des destinations du monde entier avec un engagement de ponctualité et de service exceptionnel. L'entreprise est fière de ses initiatives respectueuses de l'environnement, intégrant les dernières technologies vertes pour minimiser son empreinte environnementale. Le service client personnalisé et les tarifs compétitifs d'EquaFly en font un choix de premier plan pour les voyageurs d'affaires et de loisirs à la recherche d'une expérience de vol fluide."
+  }
+}

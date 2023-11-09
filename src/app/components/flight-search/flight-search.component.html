@@ -1,0 +1,224 @@
+<p-card class="filter-container">
+  <form [formGroup]="filterForm">
+    <div class="flex flex-row gap-3 flex-wrap">
+      <div
+        class="flex-1 flex justify-content-center align-content-center flex-column"
+      >
+        <span
+          class="filter-title text-base text-primary text-xl font-bold mb-2"
+          >{{ "flight_search.from" | translate }}</span
+        >
+        <div class="flex justify-content-center align-content-center">
+          <p-dropdown
+            #countrySelector
+            formControlName="fromCountry"
+            [options]="countries"
+            class="flex-1"
+            styleClass="filter-item border-round-3xl"
+            [dropdownIcon]="'none'"
+            [filter]="true"
+            filterBy="label"
+            optionLabel="label"
+            optionValue="label"
+            [showClear]="true"
+            placeholder="{{ 'flight_search.search_country' | translate }}"
+          >
+            <ng-template pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2">
+                <!-- <img
+                  src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                  [class]="'flag flag-' + filterForm.value['fromCountry']"
+                  style="width: 18px"
+                /> -->
+                <div>{{ filterForm.value["fromCountry"] }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-country pTemplate="item">
+              <div class="flex align-items-center gap-2">
+                <img
+                  src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                  [class]="'flag flag-' + country.code.toLowerCase()"
+                  style="width: 18px"
+                />
+                <div>{{ country.label }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p-button
+            class="ml-2 mr-1 flex"
+            styleClass="border-circle	circular-btn align-self-center "
+            icon="pi pi-chevron-down"
+            (onClick)="countrySelector.onMouseclick($event)"
+          ></p-button>
+        </div>
+      </div>
+      <div
+        class="flex-1 flex justify-content-center align-content-center flex-column"
+      >
+        <span
+          class="filter-title text-base text-primary text-xl font-bold mb-2"
+          >{{ "flight_search.to" | translate }}</span
+        >
+        <div class="flex justify-content-center align-content-center">
+          <p-dropdown
+            #toCountrySelector
+            formControlName="toCountry"
+            [options]="toCountries"
+            class="flex-1"
+            styleClass="filter-item border-round-3xl"
+            [dropdownIcon]="'none'"
+            optionLabel="label"
+            [filter]="true"
+            filterBy="name"
+            [showClear]="true"
+            optionValue="label"
+            placeholder="{{ 'flight_search.search_country' | translate }}"
+          >
+            <ng-template let-country pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2">
+                <div>{{ country.label }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-country pTemplate="item">
+              <div class="flex align-items-center gap-2">
+                <div>{{ country.label }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p-button
+            (onClick)="toCountrySelector.onMouseclick($event)"
+            class="ml-2 mr-1 flex"
+            styleClass="border-circle	circular-btn align-self-center "
+            icon="pi pi-chevron-down
+            "
+          ></p-button>
+        </div>
+      </div>
+      <div
+        class="flex-1 flex justify-content-center align-content-center flex-column"
+      >
+        <span class="filter-title text-base text-primary text-xl font-bold mb-2"
+          >Date</span
+        >
+        <div class="flex justify-content-center align-content-center">
+          <p-calendar
+            #dateSelector
+            class="flex-1 filter-item cursor-pointer"
+            selectionMode="range"
+            [readonlyInput]="true"
+            formControlName="date"
+            dateFormat="M dd"
+            styleClass="w-full"
+            placeholder="{{ 'flight_search.date' | translate }}"
+            inputStyleClass="filter-item border-round-3xl"
+          ></p-calendar>
+
+          <p-button
+            (onClick)="dateSelector.toggle()"
+            class="ml-2 mr-1 flex"
+            styleClass="border-circle	circular-btn align-self-center "
+            icon="pi pi-chevron-down
+            "
+          ></p-button>
+        </div>
+      </div>
+      <div
+        class="flex-1 flex justify-content-center align-content-center flex-column"
+      >
+        <span
+          class="filter-title text-base text-primary text-xl font-bold mb-2"
+          >{{ "flight_search.trip" | translate }}</span
+        >
+        <div class="flex justify-content-center align-content-center">
+          <p-dropdown
+            #tripSelector
+            [options]="tripTypes"
+            formControlName="tripType"
+            class="flex-1"
+            styleClass="filter-item border-round-3xl"
+            [dropdownIcon]="'none'"
+            optionLabel="label"
+            optionValue="code"
+            [showClear]="true"
+            placeholder="{{ 'flight_search.select_trip' | translate }}"
+          >
+            <ng-template let-trip pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2">
+                <div>{{ trip.label }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-trip pTemplate="item">
+              <div class="flex align-items-center gap-2">
+                <div>{{ trip.label }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p-button
+            (onClick)="tripSelector.onMouseclick($event)"
+            class="ml-2 mr-1 flex"
+            styleClass="border-circle	circular-btn align-self-center "
+            icon="pi pi-chevron-down
+            "
+          ></p-button>
+        </div>
+      </div>
+      <div
+        class="flex-1 flex justify-content-center align-content-center flex-column"
+      >
+        <span
+          class="filter-title text-base text-primary text-xl font-bold mb-2"
+          >{{ "flight_search.passengers" | translate }}</span
+        >
+        <div class="flex justify-content-center align-content-center">
+          <p-dropdown
+            #passengerSelector
+            [options]="passengers"
+            formControlName="passengers"
+            class="flex-1"
+            styleClass="filter-item border-round-3xl"
+            [dropdownIcon]="'none'"
+            optionLabel="label"
+            optionValue="code"
+            [filter]="true"
+            filterBy="label"
+            [showClear]="true"
+            placeholder="{{ 'flight_search.select_passengers' | translate }}"
+          >
+            <ng-template let-passenger pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2">
+                <div>{{ passenger.label }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-passenger pTemplate="item">
+              <div class="flex align-items-center gap-2">
+                <div>{{ passenger.label }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p-button
+            (onClick)="passengerSelector.onMouseclick($event)"
+            class="ml-2 mr-1 flex"
+            styleClass="border-circle	circular-btn align-self-center "
+            icon="pi pi-chevron-down
+            "
+          ></p-button>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-content-center mt-5">
+      <p-button
+        class="flex align-self-center"
+        styleClass="border-round-3xl text-base"
+        icon="pi pi-search"
+        label="Flight Search"
+        (onClick)="submitSearch()"
+      ></p-button>
+    </div>
+    <!-- <p-button
+      class="ml-2 mr-1 flex"
+      styleClass="border-circle	circular-btn align-self-center "
+      icon="pi pi-chevron-down"
+      (onClick)="debugForm()"
+    ></p-button> -->
+  </form>
+</p-card>

@@ -1,0 +1,24 @@
+::ng-deep p-menubarsub {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.equafly-logo {
+  height: 50px;
+  width: 150px;
+}
+
+::ng-deep a.p-menubar-button {
+  order: 3;
+}
+
+.menu-item {
+  border-bottom: 3px solid transparent; /* default no border */
+  transition: border-color 0.3s; /* animation for border */
+  padding-top: 10px !important;
+}
+
+.menu-item.active {
+  border-color: var(--primary-color); /* replace with your primary color */
+}

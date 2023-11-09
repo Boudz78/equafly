@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+/* IMPORTING PRIME-NG STYLINGS */
+// @import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeflex/primeflex.min.css";
+@import "primeicons/primeicons.css";
+
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:200");
+
+html,
+body,
+p,
+h1 {
+  margin: 0;
+}
+
+.logo {
+  background: var(--primary-color);
+  background-repeat: no-repeat;
+  mask-image: url("/assets/logo/equafly.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.center {
+  background-image: url("https://wallpaperset.com/w/full/d/5/f/183355.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100svh;
+}
+.p-card {
+  border-radius: 64px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  .p-card-body {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* Custom flex utilties */
+.mt-20 {
+  margin-top: 20%;
+}
+
+.boxed-container {
+  width: 90%;
+  @media only screen and (min-width: 992px) {
+    width: 85%;
+  }
+}

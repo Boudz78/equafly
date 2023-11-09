@@ -1,0 +1,64 @@
+<p-menubar
+  class="fixed left-0 right-0 z-5 surface-100"
+  *ngIf="{
+    isAuthenticated: (authService.isAuthenticated$ | async)
+  } as navbarContext"
+>
+  <ng-template pTemplate="start">
+    <div class="logo equafly-logo mr-2"></div>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="flex">
+      <div
+        *ngIf="!navbarContext.isAuthenticated"
+        class="menu-item text-xl text-surface-900 font-bold mx-3 pb-2 border-bottom-3 cursor-pointer"
+        routerLinkActive="active"
+        routerLink="/login"
+      >
+        Login
+      </div>
+      <div
+        *ngIf="navbarContext.isAuthenticated"
+        [ngClass]="{
+          'text-500': !navbarContext.isAuthenticated,
+          'text-surface-900': navbarContext.isAuthenticated
+        }"
+        class="menu-item text-xl font-bold mx-3 pt-1 border-bottom-3 cursor-pointer"
+        routerLinkActive="active"
+        routerLink="/home"
+      >
+        Home
+      </div>
+      <div
+        *ngIf="navbarContext.isAuthenticated"
+        [ngClass]="{
+          'text-500': !navbarContext.isAuthenticated,
+          'text-surface-900': navbarContext.isAuthenticated
+        }"
+        class="menu-item text-xl font-bold mx-3 pt-1 border-bottom-3 cursor-pointer"
+        routerLinkActive="active"
+        routerLink="/about"
+      >
+        About
+      </div>
+      <div
+        (click)="UiService.openSideNav()"
+        class="menu-item text-xl font-bold mx-3 pt-1 border-bottom-3 cursor-pointer"
+      >
+        <i class="pi pi-cog" style="font-size: 2rem"></i>
+      </div>
+      <!-- <div
+        class="menu-item text-xl text-primary font-bold mx-3 pb-2 border-bottom-3"
+        routerLinkActive="active"
+        routerLink="/profile"
+      >
+        Profile
+      </div> -->
+    </div>
+    <!-- <div class="flex">
+
+        <h1>Hello</h1>
+    </div> -->
+    <!-- <input type="text" pInputText placeholder="Search" class="w-full" /> -->
+  </ng-template>
+</p-menubar>

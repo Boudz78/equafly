@@ -1,0 +1,99 @@
+<p-card>
+  <form [formGroup]="filterForm">
+    <h1 class="text-2xl">{{ "flight_filter.filter_by" | translate }}</h1>
+    <h5>{{ "flight_filter.nb_of_stops" | translate }}</h5>
+    <div class="flex flex-column gap-3">
+      <div class="flex-1">
+        <p-radioButton
+          formControlName="stops"
+          name="stops"
+          inputId="NoneStop"
+          [value]="0"
+        ></p-radioButton>
+        <label for="NoneStop" class="ml-2">None</label>
+      </div>
+
+      <div class="flex-1">
+        <p-radioButton
+          name="stops"
+          formControlName="stops"
+          [value]="1"
+          inputId="OneStop"
+        ></p-radioButton>
+        <label for="OneStop" class="ml-2">One-stop</label>
+      </div>
+
+      <div class="flex-1">
+        <p-radioButton
+          name="stops"
+          formControlName="stops"
+          [value]="2"
+          inputId="TwoStop"
+        ></p-radioButton>
+        <label for="TwoStop" class="ml-2">Two-stops</label>
+      </div>
+      <div class="flex-1">
+        <p-radioButton
+          name="stops"
+          formControlName="stops"
+          [value]="3"
+          inputId="ThreeStop"
+        ></p-radioButton>
+        <label for="ThreeStop" class="ml-2">Three-stops</label>
+      </div>
+    </div>
+    <h5>{{ "flight_filter.airlines" | translate }}</h5>
+
+    <div class="grid">
+      <div
+        class="col-6 md:col-12"
+        *ngFor="let airline of uniqueAirlines; let i = index"
+      >
+        <p-radioButton
+          name="airline"
+          formControlName="airline"
+          [value]="airline.code"
+          [inputId]="i + ''"
+        ></p-radioButton>
+        <label [for]="i + ''" class="ml-2">{{ airline.name }}</label>
+      </div>
+    </div>
+
+    <h5>{{ "flight_filter.price" | translate }}</h5>
+
+    <div class="mb-4">
+      <div class="mb-3">
+        <span class="text-primary font-bold"
+          >Between
+          {{
+            "$" +
+              filterForm.value["price"]![0] +
+              " - $" +
+              filterForm.value["price"]![1]
+          }}
+        </span>
+      </div>
+
+      <p-slider
+        formControlName="price"
+        [range]="true"
+        [min]="minPrice"
+        [max]="maxPrice"
+      ></p-slider>
+    </div>
+
+    <div>
+      <!-- <div class="card flex justify-content-center mb-2"></div> -->
+      <p-button
+        class="ml-2 mr-1 flex justify-content-end"
+        (onClick)="triggerFilter()"
+        label="{{ 'flight_filter.apply_filters' | translate }}"
+      ></p-button>
+      <!-- <p-button
+        class="ml-2 mr-1 flex justify-content-end"
+        (onClick)="clearFilter()"
+        label="{{ 'flight_filter.clear_filters' | translate }}"
+      ></p-button> -->
+    </div>
+  </form>
+</p-card>

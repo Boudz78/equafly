@@ -1,0 +1,64 @@
+{
+  "login": {
+    "portalTitle": "Portal Login",
+    "login": "Login",
+    "username": "Username",
+    "Password": "Password"
+  },
+  "navbar": {
+    "settings": "Settings",
+    "dark_mode": "Dark Mode"
+  },
+  "home_screen": {
+    "title": "Your Flights, at a glance.",
+    "results": "Results"
+  },
+  "flight_search": {
+    "from": "From",
+    "to": "To",
+    "date": "Date",
+    "trip": "Trip",
+    "passengers": "Passengers",
+    "go": "Go",
+    "search_country": "Search Country",
+    "search_date": "Search Date",
+    "select_trip": "Select a Trip",
+    "select_passengers": "Passenger Size"
+  },
+  "flight_line": {
+    "outbound": "Outbound Flight",
+    "inbound": "Inbound Flight",
+    "flight_summary": "Flight Summary",
+    "passengers": "Passengers",
+    "baggages_per_person": "Baggages per person"
+  },
+  "cc_card": {
+    "flight_total": "Flight Total",
+    "scan_card": "Scan Card",
+    "or": "or",
+    "enter_manually": "Enter Manually",
+    "card_nb": "Card Number",
+    "expiry_date": "Expiry Date",
+    "name": "Name",
+    "cvv": "CVV",
+    "pay": "Pay"
+  },
+  "flight_filter": {
+    "filter_by": "Filter By",
+    "nb_of_stops": "Number Of Stops",
+    "airlines": "Airlines",
+    "price": "Price",
+    "apply_filters": "Apply Filters"
+  },
+  "flight_details": {
+    "title": "You're almost there! "
+  },
+  "shared": {
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "about": {
+    "about_us": "What we do.",
+    "para": "EquaFly is an innovative aviation company dedicated to providing premium and sustainable air travel solutions. With a modern fleet designed for efficiency and comfort, EquaFly connects passengers to destinations worldwide with a commitment to punctuality and exceptional service. The company prides itself on its eco-friendly initiatives, incorporating the latest in green technology to minimize its environmental footprint. EquaFly's personalized customer service and competitive pricing position it as a leading choice for both business and leisure travelers seeking a seamless flying experience."
+  }
+}

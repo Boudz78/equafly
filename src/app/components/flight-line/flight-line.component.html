@@ -1,0 +1,177 @@
+<p-card class="flight-container cursor-pointer" styleClass=" relative">
+  <ng-template pTemplate="header">
+    <div
+      class="bg-primary flex justify-content-between mobile-title-price-header"
+      [ngClass]="{
+        'bg-primary': !showTripSummary,
+        'border-bottom-1': showTripSummary
+      }"
+    >
+      <div class="flex align-content-center font-bold" *ngIf="!showTripSummary">
+        <img
+          [src]="'/assets/airline_logos/' + trip.airline.code + '.png'"
+          class="border-circle airline-logo mr-2 align-self-center"
+          alt="{{ trip.airline.name }}"
+        />
+        <span class="text-2xl align-self-center font-bold">{{
+          trip.airline.name
+        }}</span>
+      </div>
+      <div class="flex align-content-center font-bold" *ngIf="showTripSummary">
+        <span class="text-4xl font-bold align-self-center">
+          {{ "flight_line.flight_summary" | translate }}
+        </span>
+      </div>
+      <div class="flex">
+        <span
+          class="text-2xl align-self-center font-bold"
+          *ngIf="!showTripSummary"
+          >{{ trip?.price | currency : "USD" : "symbol" }}</span
+        >
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <!-- <div *ngIf="showTripSummary" class="mt-1 mb-2">
+      <span class="text-white font-bold text-2xl">Flight Summary</span>
+    </div> -->
+
+    <ng-container #outboundFlight>
+      <div class="flex">
+        <div class="airline-takeoff align-self-center mr-3"></div>
+        <div class="text-light font-bold align-self-center text-xl">
+          {{ "flight_line.outbound" | translate }}
+        </div>
+      </div>
+      <div class="flex flex-column lg:flex-row lg:py-5 md:mb-5 lg:px-5">
+        <div class="flex justify-content-center align-items-center"></div>
+        <div
+          *ngFor="
+            let takeOffTrip of trip?.tripInfo;
+            let first = first;
+            let last = last
+          "
+          class="flex relative flex-1"
+        >
+          <div
+            class="flex-1 flex relative justify-content-center align-content-center flex-row lg:flex-column mobile-spacer lg:desktop-spacer"
+          >
+            <div
+              class="text-center flex justify-content-center align-content-center lg:desktop-spacer"
+            >
+              <span class="text-xl align-self-center font-bold">{{
+                takeOffTrip.departureTime | date : "HH:mm"
+              }}</span>
+            </div>
+            <div
+              class="flex justify-content-center align-content-center mx-4 lg:mx-0 flex-column lg:flex-row lg:my-3"
+            >
+              <div
+                [ngClass]="{ 'opacity-0': first }"
+                class="flex-1 border-middle lg:border-bottom-1 w-full align-self-center"
+              ></div>
+              <div class="flex">
+                <span class="dot align-self-center"></span>
+              </div>
+              <div
+                [ngClass]="{ 'opacity-0': last }"
+                class="flex-1 border-middle lg:border-bottom-1 w-full align-self-center"
+              ></div>
+            </div>
+            <div
+              class="lg:mt-2 flex justify-content-center align-content-center flex-column lg:desktop-spacer"
+            >
+              <p class="text-center font-bold">
+                {{ takeOffTrip.airport }}
+              </p>
+              <p class="text-center text-600" style="min-width: 100px">
+                {{ takeOffTrip.departureTime | date : "mediumDate" }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <hr class="mb-5" *ngIf="(trip?.roundTripInfo)!.length > 0" />
+
+    <ng-container #inboundFlight *ngIf="(trip?.roundTripInfo)!.length > 0">
+      <div class="flex">
+        <div class="airline-takeoff align-self-center mr-3"></div>
+        <div class="text-light font-bold align-self-center text-xl">
+          {{ "flight_line.inbound" | translate }}
+        </div>
+      </div>
+      <div class="flex flex-column lg:flex-row lg:py-5 md:mb-5 lg:px-5">
+        <div class="flex justify-content-center align-items-center"></div>
+        <div
+          *ngFor="
+            let takeOffTrip of trip?.roundTripInfo;
+            let first = first;
+            let last = last
+          "
+          class="flex relative flex-1"
+        >
+          <div
+            class="flex-1 flex relative justify-content-center align-content-center flex-row lg:flex-column mobile-spacer lg:desktop-spacer"
+          >
+            <div
+              class="text-center flex justify-content-center align-content-center lg:desktop-spacer"
+            >
+              <span class="text-xl align-self-center font-bold">{{
+                takeOffTrip.departureTime | date : "HH:mm"
+              }}</span>
+            </div>
+            <div
+              class="flex justify-content-center align-content-center mx-4 lg:mx-0 flex-column lg:flex-row lg:my-3"
+            >
+              <div
+                [ngClass]="{ 'opacity-0': first }"
+                class="flex-1 border-middle lg:border-bottom-1 w-full align-self-center"
+              ></div>
+              <div class="flex">
+                <span class="dot align-self-center"></span>
+              </div>
+              <div
+                [ngClass]="{ 'opacity-0': last }"
+                class="flex-1 border-middle lg:border-bottom-1 w-full align-self-center"
+              ></div>
+            </div>
+            <div
+              class="lg:mt-2 flex justify-content-center align-content-center flex-column lg:desktop-spacer"
+            >
+              <p class="text-center font-bold">
+                {{ takeOffTrip.airport }}
+              </p>
+              <p class="text-center text-600" style="min-width: 100px">
+                {{ takeOffTrip.departureTime | date : "mediumDate" }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="p-5 grid" *ngIf="showTripSummary">
+      <div class="flex col-12 md:col-6">
+        <div>
+          <div class="passenger-logo" style="height: 50px; width: 50px"></div>
+        </div>
+        <div class="flex align-items-center ml-3">
+          <span class="text-black font-bold text-xl">
+            5 {{ "flight_line.passengers" | translate }}</span
+          >
+        </div>
+      </div>
+      <div class="flex col-12 md:col-6">
+        <div>
+          <div class="bag-logo" style="height: 50px; width: 50px"></div>
+        </div>
+        <div class="flex align-items-center ml-3">
+          <span class="text-black font-bold text-xl">
+            2 {{ "flight_line.baggages_per_person" | translate }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-card>

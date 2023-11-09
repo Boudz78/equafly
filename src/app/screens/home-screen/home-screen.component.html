@@ -1,0 +1,159 @@
+<div
+  *ngIf="{
+    filterScreenOpened: (uiService.filterTabOpenedSelector$ | async),
+    flightData: displayedFlights$ | async
+  } as homeScreenContext"
+  class="home-screen bg-light h-100 flex justify-content-center"
+>
+  <!-- <h1>IS SIDE OPENED? {{ homeScreenContext.filterScreenOpened }}</h1> -->
+
+  <div
+    class="boxed-container"
+    [ngClass]="{
+      'flex justify-content-center align-content-center': !searchedOnce,
+      'mt-4': searchedOnce
+    }"
+  >
+    <div class="flex justify-content-center align-content-center flex-column">
+      <div
+        class="flex justify-content-center align-content-center"
+        @fadeIn
+        *ngIf="!searchedOnce"
+      >
+        <div class="logo equafly-logo"></div>
+      </div>
+
+      <div class="mb-3">
+        <span *ngIf="searchedOnce" class="text-6xl text-primary font-bold">{{
+          "home_screen.title" | translate
+        }}</span>
+      </div>
+      <app-flight-search (didFilter)="didFilter($event)"></app-flight-search>
+    </div>
+
+    <ng-container *ngIf="searchedOnce">
+      <div class="grid mt-2">
+        <ng-container
+          *ngIf="
+            homeScreenContext.flightData && !isLoading;
+            else loadingContent
+          "
+        >
+          <div class="col">
+            <div class="flex justify-content-between mb-3 mt-3">
+              <div class="flex flex-row">
+                <div class="flex flex-column">
+                  <div
+                    class="flex-1 text-primary text-2xl font-bold align-self-left"
+                  >
+                    {{ homeScreenContext.flightData.length + " Results" }}
+                  </div>
+                  <div
+                    class="flex-1 flex flex-wrap align-content-center text-primary text-base font-bold align-self-left"
+                  >
+                    Showing {{ (p - 1) * 10 + 1 }} to
+                    {{ Math.min(p * 10, homeScreenContext.flightData.length) }}
+                    of
+                    {{ homeScreenContext.flightData.length }}
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="
+                  localFilter.airline !== null ||
+                  localFilter.stops !== null ||
+                  localFilter.price !== null
+                "
+                (click)="didFilter()"
+                class="bg-primary p-3 border-round-2xl flex align-content-center cursor-pointer"
+              >
+                <i class="pi pi-times-circle text-2xl mr-2"></i>
+                <span class="align-self-center font-bold">Clear Filters</span>
+              </div>
+              <div
+                *ngIf="
+                  localFilter.airline === null &&
+                  localFilter.stops === null &&
+                  localFilter.price === null
+                "
+                class="bg-primary p-3 border-round-2xl"
+                (click)="uiService.toggleFilterTab()"
+              >
+                <i
+                  [ngClass]="{
+                    'pi-chevron-right': homeScreenContext.filterScreenOpened,
+                    'pi-filter': !homeScreenContext.filterScreenOpened
+                  }"
+                  class="pi text-2xl"
+                ></i>
+              </div>
+            </div>
+            <div
+              class="flex justify-content-center mt-8"
+              *ngIf="homeScreenContext.flightData.length === 0"
+            >
+              <span class="font-bold text-2xl text-primary"
+                >No Results Found</span
+              >
+            </div>
+            <div
+              class="mb-6"
+              *ngFor="
+                let trip of homeScreenContext.flightData!
+                  | paginate : { itemsPerPage: 10, currentPage: p }
+              "
+            >
+              <app-flight-line
+                [trip]="trip"
+                (click)="navigateToFlightDetails(trip.id)"
+              ></app-flight-line>
+            </div>
+            <pagination-controls
+              *ngIf="homeScreenContext.flightData.length > 0"
+              previousLabel=""
+              nextLabel=""
+              (pageChange)="p = $event"
+              [directionLinks]="false"
+            ></pagination-controls>
+          </div>
+          <p-sidebar
+            [visible]="!!homeScreenContext.filterScreenOpened"
+            class="md:hidden"
+            (onHide)="uiService.closeFilterTab()"
+            [modal]="false"
+            [fullScreen]="true"
+            [blockScroll]="true"
+          >
+            <app-flight-filter
+              [flights]="homeScreenContext.flightData"
+              (didFilter)="didFilterLocally($event)"
+            ></app-flight-filter>
+          </p-sidebar>
+          <div
+            *ngIf="homeScreenContext.flightData.length > 0"
+            class="col-3 hidden md:block"
+            [@collapseExpand]="
+              homeScreenContext.filterScreenOpened ? 'open' : 'closed'
+            "
+          >
+            <app-flight-filter
+              [flights]="homeScreenContext.flightData"
+              (didFilter)="didFilterLocally($event)"
+            ></app-flight-filter>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loadingContent>
+  <div class="col-12 flex justify-content-center align-items-center mt-20">
+    <p-progressSpinner
+      styleClass="w-4rem h-4rem"
+      strokeWidth="8"
+      fill="var(--surface-ground)"
+      animationDuration=".5s"
+    ></p-progressSpinner>
+  </div>
+</ng-template>

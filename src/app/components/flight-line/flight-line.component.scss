@@ -1,0 +1,79 @@
+/* Flight Container Stylings */
+::ng-deep .flight-container {
+  .mobile-title-price-header {
+    padding: 16px 42px;
+    border-top-right-radius: 64px;
+    border-top-left-radius: 64px;
+    min-width: 200px;
+  }
+  .p-card-content {
+    padding: 0;
+  }
+  /* FLIGHT ITEM */
+  .airline-logo {
+    height: 40px;
+    width: 40px;
+  }
+  .airline-takeoff {
+    background: var(--primary-color);
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 60px;
+    mask-image: url("/assets/logo/flight_takeoff.svg");
+    mask-repeat: no-repeat;
+    mask-size: contain;
+  }
+  .airline-return {
+    background: var(--primary-color);
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 60px;
+    mask-image: url("/assets/logo/flight_land.svg");
+    mask-repeat: no-repeat;
+    mask-size: contain;
+  }
+  .dot {
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: inline-block;
+    align-self: center;
+    z-index: 2;
+  }
+
+  .border-middle {
+    position: relative;
+  }
+
+  .border-middle::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 1px solid var(--primary-color);
+  }
+  .mobile-spacer {
+    height: 100px;
+  }
+  .desktop-spacer {
+    height: auto;
+    //   height: 50px;
+  }
+  .passenger-logo {
+    background: var(--primary-color);
+    background-repeat: no-repeat;
+    mask-image: url("/assets/logo/people.svg");
+    mask-repeat: no-repeat;
+    mask-size: contain;
+  }
+  .bag-logo {
+    background: var(--primary-color);
+    background-repeat: no-repeat;
+    mask-image: url("/assets/logo/bag.svg");
+    mask-repeat: no-repeat;
+    mask-size: contain;
+  }
+}

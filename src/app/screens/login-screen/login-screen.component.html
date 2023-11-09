@@ -1,0 +1,60 @@
+<div class="flex justify-content-center align-content-center flex-wrap center">
+  <p-card
+    class="w-11 sm:w-8 lg:w-7 xl:w-3"
+    header="{{ 'login.portalTitle' | translate }}"
+  >
+    <ng-template pTemplate="header">
+      <div class="pt-3 pl-3 pr-3">
+        <div class="logo equafly-logo"></div>
+        <!-- <img alt="Card" src="/assets/logo/equafly.svg" /> -->
+      </div>
+    </ng-template>
+    <!-- Username-->
+    <div class="p-inputgroup mb-3">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-user"></i>
+      </span>
+      <input pInputText placeholder="Username" />
+    </div>
+    <!-- Password-->
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-key"></i>
+      </span>
+      <input pInputText placeholder="Password" />
+    </div>
+    <ng-template pTemplate="footer">
+      <div class="flex justify-content-end">
+        <ng-template
+          *ngIf="
+            !(authService.authState$ | async)!.isLoading;
+            then loginContainer;
+            else loadingContainer
+          "
+        >
+        </ng-template>
+        <ng-template #loginContainer>
+          <p-button
+            label="{{ 'login.login' | translate }}"
+            icon="pi pi-sign-in"
+            (onClick)="didClickLogin()"
+          ></p-button>
+          <!-- <p-button
+            label="Cancel"
+            icon="pi pi-times"
+            styleClass="p-button-secondary"
+            [style]="{ 'margin-left': '.5em' }"
+          ></p-button> -->
+        </ng-template>
+        <ng-template #loadingContainer
+          ><p-progressSpinner
+            styleClass="w-2rem h-2rem"
+            strokeWidth="8"
+            fill="var(--surface-ground)"
+            animationDuration=".5s"
+          ></p-progressSpinner
+        ></ng-template>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

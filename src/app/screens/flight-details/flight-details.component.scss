@@ -1,0 +1,32 @@
+.flight-details-screen {
+  height: 100vh;
+  padding-top: 84px;
+}
+::ng-deep .price-container {
+  // .p-card-content {
+  //   padding-top: 0px;
+  // }
+
+  .mobile-title-price-header {
+    padding: 16px 42px;
+    border-top-right-radius: 64px;
+    border-top-left-radius: 64px;
+    min-width: 200px;
+  }
+  //   .p-card-content {
+  //     padding-top: 0;
+  //   }
+}
+
+::ng-deep .credit-card {
+  height: 310px;
+  width: 490px;
+  background-color: var(--gray-800);
+}
+.equafly-logo {
+  height: 50px;
+  width: 150px;
+}
+.no-wrap {
+  text-wrap: nowrap;
+}

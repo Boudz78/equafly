@@ -1,0 +1,38 @@
+<p-sidebar
+  [blockScroll]="true"
+  (onHide)="uiService.closeSideNav()"
+  [visible]="!!(uiService.sideNavOpenedSelector$ | async)"
+  position="right"
+>
+  <ng-template pTemplate="header">
+    <div class="flex justify-content-center align-content-center">
+      <p class="text-2xl font-medium">{{ "navbar.settings" | translate }}</p>
+    </div>
+  </ng-template>
+
+  <div class="p-4 flex justify-content-center align-content-center">
+    <span class="mr-3 font-medium">{{ "navbar.dark_mode" | translate }}</span>
+    <p-inputSwitch
+      [ngModel]="uiService.isDarkMode$ | async"
+      (onChange)="uiService.toggleTheme()"
+    ></p-inputSwitch>
+  </div>
+
+  <div class="p-4 flex justify-content-center align-content-center">
+    <p-selectButton
+      [options]="stateOptions"
+      (onChange)="onLangChanged()"
+      [ngModel]="uiService.language$ | async"
+      optionLabel="label"
+      optionValue="value"
+    ></p-selectButton>
+  </div>
+
+  <div
+    *ngIf="authService.isAuthenticated$ | async"
+    class="p-4 flex justify-content-center align-content-center"
+    (click)="authService.attemptToLogOut()"
+  >
+    <p-button label="Log Out" severity="danger"></p-button>
+  </div>
+</p-sidebar>
