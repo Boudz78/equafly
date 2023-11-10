@@ -3,11 +3,22 @@
     filterScreenOpened: (uiService.filterTabOpenedSelector$ | async),
     flightData: displayedFlights$ | async
   } as homeScreenContext"
-  class="home-screen bg-light h-100 flex justify-content-center"
+  class="home-screen bg-light h-100 flex justify-content-center relative"
   [ngClass]="{
     'surface-300': !(uiService.isDarkMode$ | async)
   }"
 >
+  <div class="flex anim absolute left-0 right-0 bottom-0 top-0 flex-column">
+    <div class="flex-1 flex align-items-center">
+      <div class="plane bg-primary"></div>
+    </div>
+    <div class="flex-1 flex align-items-center">
+      <div class="plane bg-primary delay-1"></div>
+    </div>
+    <div class="flex-1 flex align-items-center">
+      <div class="plane bg-primary delay-2"></div>
+    </div>
+  </div>
   <!-- <h1>IS SIDE OPENED? {{ homeScreenContext.filterScreenOpened }}</h1> -->
 
   <div

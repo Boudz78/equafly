@@ -1,14 +1,14 @@
-import { AfterViewInit, Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FlightLineComponent } from 'src/app/components/flight-line/flight-line.component';
-import { CardModule } from 'primeng/card';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AfterViewInit, Component, inject } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { Flight } from 'src/app/models/flight.model';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
-import { TranslateModule } from '@ngx-translate/core';
-import { Flight } from 'src/app/models/flight.model';
-import { UiService } from 'src/app/services/ui.service';
+import { CommonModule } from '@angular/common';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-flight-details',
@@ -27,17 +27,14 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./flight-details.component.scss'],
 })
 export class FlightDetailsComponent implements AfterViewInit {
-  selectedFlight: any;
-  router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
+  selectedFlight: Flight | undefined;
   uiService = inject(UiService);
+  router = inject(Router);
 
   ngAfterViewInit() {
-    console.log(this.activatedRoute.snapshot);
-
     setTimeout(() => {
       this.selectedFlight = this.activatedRoute.snapshot.data['flightDetails'];
     }, 0);
-    console.log(this.selectedFlight);
   }
 }

@@ -1,37 +1,72 @@
 .home-screen {
   height: 100vh;
   padding-top: 82px;
+  .anim {
+    margin-top: 82px;
+  }
   ::ng-deep .p-card-body {
-    padding-left: 32px !important;
-    padding-right: 64px !important;
+    padding-left: 32px;
+    padding-right: 64px;
   }
-}
-
-::ng-deep .ngx-pagination .current {
-  background: var(--primary-color) !important;
-  border-radius: 50%;
-  //   color: var(--white-color);
-}
-::ng-deep .ngx-pagination a:hover,
-.ngx-pagination button:hover {
-  background: var(--primary-color) !important;
-  border-radius: 50%;
-}
-::ng-deep .ngx-pagination .current {
-  padding-top: 5px !important;
-  font-size: 1rem;
-}
-
-::ng-deep .ngx-pagination a {
-  color: var(--surface-900) !important;
-}
-
-.logo {
-  width: 90%;
-  @media only screen and (min-width: 992px) {
-    width: 50%;
+  ::ng-deep .ngx-pagination .current {
+    background: var(--primary-color) !important;
+    border-radius: 50%;
   }
-  max-width: 100%;
-  aspect-ratio: 2.61;
-  flex-shrink: 0;
+  ::ng-deep .ngx-pagination a:hover,
+  .ngx-pagination button:hover {
+    background: var(--primary-color) !important;
+    border-radius: 50%;
+  }
+  ::ng-deep .ngx-pagination .current {
+    padding-top: 5px !important;
+    font-size: 1rem;
+  }
+
+  ::ng-deep .ngx-pagination a {
+    color: var(--surface-900) !important;
+  }
+
+  .logo {
+    width: 90%;
+    @media only screen and (min-width: 992px) {
+      width: 50%;
+    }
+    max-width: 100%;
+    aspect-ratio: 2.61;
+    flex-shrink: 0;
+  }
+  .plane {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    background-repeat: no-repeat;
+    mask-image: url("/assets/logo/plane.svg");
+    transform: rotateZ(90deg);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-size: cover;
+    animation: fly 10s linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes fly {
+    0% {
+      opacity: 100;
+      margin-left: -1000px;
+    }
+    100% {
+      margin-left: 100%;
+    }
+  }
+
+  .delay-1 {
+    animation-delay: 5000ms;
+  }
+  .delay-2 {
+    animation-delay: 10000ms;
+  }
+  .delay-3 {
+    animation-delay: 15000ms;
+  }
 }
