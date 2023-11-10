@@ -1,26 +1,24 @@
+import { FlightFilterComponent } from 'src/app/components/flight-filter/flight-filter.component';
+import { FlightSearchComponent } from 'src/app/components/flight-search/flight-search.component';
+import { FlightLineComponent } from 'src/app/components/flight-line/flight-line.component';
+import { localFilter, serverFilter } from 'src/app/models/flight.model';
+import { collapseExpand, fadeIn } from 'src/app/animations/animations';
+import { UtilityService } from 'src/app/services/utility.service';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { Component, HostListener, inject } from '@angular/core';
+import { BehaviorSubject, map, switchMap, tap } from 'rxjs';
+import { ApiService } from 'src/app/services/api.service';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { UiService } from 'src/app/services/ui.service';
+import { Router, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginatorModule } from 'primeng/paginator';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
-
+import { SidebarModule } from 'primeng/sidebar';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
-import { PaginatorModule } from 'primeng/paginator';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
-import { Component, HostListener, inject } from '@angular/core';
-import { RadioButtonModule } from 'primeng/radiobutton';
-import { FlightLineComponent } from 'src/app/components/flight-line/flight-line.component';
-import { FlightSearchComponent } from 'src/app/components/flight-search/flight-search.component';
-import { FlightFilterComponent } from 'src/app/components/flight-filter/flight-filter.component';
-import { collapseExpand, fadeIn } from 'src/app/animations/animations';
-import { UiService } from 'src/app/services/ui.service';
-import { SidebarModule } from 'primeng/sidebar';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { ApiService } from 'src/app/services/api.service';
-import { Router, RouterModule } from '@angular/router';
-import { BehaviorSubject, map, switchMap, tap } from 'rxjs';
-import { TranslateModule } from '@ngx-translate/core';
-import { UtilityService } from 'src/app/services/utility.service';
-import { localFilter, serverFilter } from 'src/app/models/flight.model';
 
 @Component({
   selector: 'app-home-screen',

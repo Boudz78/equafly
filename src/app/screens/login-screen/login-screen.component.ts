@@ -1,18 +1,18 @@
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { AuthService } from 'src/app/services/auth.service';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { UiService } from './../../services/ui.service';
 import { authPayload } from 'src/app/models/auth.types';
+import { TranslateModule } from '@ngx-translate/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { Component, inject } from '@angular/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { TranslateModule } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-login-screen',
@@ -44,8 +44,6 @@ export class LoginScreenComponent {
   });
 
   didClickLogin(payload?: authPayload) {
-    // this.MessageService.
-    // return;
     this.authService.attemptToLogin({ email: 'abdallah', password: 'hello' });
   }
 }

@@ -1,12 +1,14 @@
-.equafly-logo {
-  width: 100%;
-  min-height: 100px;
-  aspect-ratio: 2.61;
-}
-.login-card {
-  width: 90%;
-}
+.login-screen {
+  .equafly-logo {
+    width: 100%;
+    min-height: 100px;
+    aspect-ratio: 2.61;
+  }
+  .login-card {
+    width: 90%;
+  }
 
-::ng-deep .p-card .p-card-body {
-  padding: 2rem;
+  ::ng-deep .p-card .p-card-body {
+    padding: 2rem;
+  }
 }
