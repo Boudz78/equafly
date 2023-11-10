@@ -5,12 +5,14 @@ import { ApiService } from 'src/app/services/api.service';
 import { UiService } from 'src/app/services/ui.service';
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Injectable()
 export class AuthEffects {
-  private actions$ = inject(Actions);
+  private messageService = inject(MessageService);
   private apiService = inject(ApiService);
   private uiService = inject(UiService);
+  private actions$ = inject(Actions);
   private router = inject(Router);
 
   attemptToLoginEffect$ = createEffect(() =>
@@ -35,6 +37,13 @@ export class AuthEffects {
         ofType(authActionTypes.LOGIN_SUCCESS),
         tap(() => {
           this.router.navigate(['/home']);
+          console.log(this.messageService);
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Login Successful!',
+          });
+          console.log('DONE');
         })
       ),
     {

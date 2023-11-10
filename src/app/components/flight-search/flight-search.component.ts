@@ -1,5 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { serverFilter } from 'src/app/models/flight.model';
 import { ApiService } from 'src/app/services/api.service';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,20 +8,19 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
-import { serverFilter } from 'src/app/models/flight.model';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
   imports: [
-    CommonModule,
+    ReactiveFormsModule,
+    RadioButtonModule,
+    TranslateModule,
     DropdownModule,
     CalendarModule,
-    RadioButtonModule,
-    ReactiveFormsModule,
-    TranslateModule,
-    CardModule,
+    CommonModule,
     FormsModule,
+    CardModule,
   ],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.scss'],

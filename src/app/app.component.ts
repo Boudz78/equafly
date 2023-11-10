@@ -7,6 +7,7 @@ import { AuthService } from './services/auth.service';
 import { UiService } from './services/ui.service';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     TranslateModule,
     FormsModule,
+    ToastModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

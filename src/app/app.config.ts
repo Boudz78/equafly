@@ -20,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 const scrollConfig: InMemoryScrollingOptions = {
   scrollPositionRestoration: 'top',
@@ -40,15 +42,17 @@ export function localStorageSyncReducer(
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
+const commonModules = [
+  BrowserAnimationsModule,
+  ReactiveFormsModule,
+  HttpClientModule,
+  FormsModule,
+];
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, inMemoryScrollingFeature),
     importProvidersFrom(
-      HttpClientModule,
-
-      ReactiveFormsModule,
-      FormsModule,
-      BrowserAnimationsModule,
       StoreModule.forRoot(
         {
           ui: uiReducer,
@@ -64,7 +68,9 @@ export const appConfig: ApplicationConfig = {
         },
       }),
       StoreDevtoolsModule.instrument(),
-      EffectsModule.forRoot([UIEffects, AuthEffects])
+      EffectsModule.forRoot([UIEffects, AuthEffects]),
+      [...commonModules]
     ),
+    MessageService,
   ],
 };

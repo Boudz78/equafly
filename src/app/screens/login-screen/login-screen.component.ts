@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TranslateModule } from '@ngx-translate/core';
+import { MessageService } from 'primeng/api';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-screen',
@@ -24,16 +26,26 @@ import { TranslateModule } from '@ngx-translate/core';
     CheckboxModule,
     RadioButtonModule,
     ProgressSpinnerModule,
+    ReactiveFormsModule,
     TranslateModule,
   ],
   templateUrl: './login-screen.component.html',
   styleUrls: ['./login-screen.component.scss'],
 })
 export class LoginScreenComponent {
-  uiService = inject(UiService);
+  MessageService = inject(MessageService);
   authService = inject(AuthService);
+  uiService = inject(UiService);
+  fb = inject(FormBuilder);
+
+  loginForm = this.fb.group({
+    email: [null, Validators.required],
+    password: [null, Validators.required],
+  });
 
   didClickLogin(payload?: authPayload) {
+    // this.MessageService.
+    // return;
     this.authService.attemptToLogin({ email: 'abdallah', password: 'hello' });
   }
 }

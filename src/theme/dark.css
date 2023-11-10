@@ -133,6 +133,9 @@
   }
 }
 :root {
+
+  
+
   --blue-50: #f4fafe;
   --blue-100: #cae6fc;
   --blue-200: #a0d2fa;
@@ -9101,4 +9104,8 @@ p-multiselect.ng-dirty.ng-invalid .p-multiselect:not(.p-disabled).p-focus {
 .p-splitbutton.p-button-danger.p-button-outlined
   > .p-button:not(button):not(a):not(.p-disabled):active {
   background: rgba(239, 154, 154, 0.16);
+}
+
+.body{
+  background-color: var(--surface-0);
 }

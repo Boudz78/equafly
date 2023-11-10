@@ -9,20 +9,23 @@
         <!-- <img alt="Card" src="/assets/logo/equafly.svg" /> -->
       </div>
     </ng-template>
-    <!-- Username-->
-    <div class="p-inputgroup mb-3">
-      <span class="p-inputgroup-addon">
-        <i class="pi pi-user"></i>
-      </span>
-      <input pInputText placeholder="Username" />
-    </div>
-    <!-- Password-->
-    <div class="p-inputgroup">
-      <span class="p-inputgroup-addon">
-        <i class="pi pi-key"></i>
-      </span>
-      <input pInputText placeholder="Password" />
-    </div>
+    <form [formGroup]="loginForm">
+      <!-- Username-->
+      <div class="p-inputgroup mb-3">
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-user"></i>
+        </span>
+        <input pInputText placeholder="Username" formControlName="email" />
+      </div>
+      <!-- Password-->
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-key"></i>
+        </span>
+        <input pInputText placeholder="Password" formControlName="password" />
+      </div>
+    </form>
+
     <ng-template pTemplate="footer">
       <div class="flex justify-content-end">
         <ng-template
@@ -35,6 +38,7 @@
         </ng-template>
         <ng-template #loginContainer>
           <p-button
+            [disabled]="loginForm.invalid"
             label="{{ 'login.login' | translate }}"
             icon="pi pi-sign-in"
             (onClick)="didClickLogin()"

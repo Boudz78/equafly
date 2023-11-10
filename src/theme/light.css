@@ -9034,3 +9034,6 @@ p-multiselect.ng-dirty.ng-invalid .p-multiselect:not(.p-disabled).p-focus {
   > .p-button:not(button):not(a):not(.p-disabled):active {
   background: rgba(211, 47, 47, 0.16);
 }
+.body{
+  background-color: var(--surface-300);
+}
